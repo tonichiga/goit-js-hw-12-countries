@@ -51,8 +51,9 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.1",
     "handlebars": "^4.7.6",
-    "lodash.debounce": "^4.0.8"
+    "lodash.debounce": "^4.0.8",
+    "material-design-icons": "^3.0.1"
   }
 }

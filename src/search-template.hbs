@@ -1,0 +1,31 @@
+{{#each this}}
+<div class="template-wrapper">
+  <div class="template-wrapper__info">
+
+    <h1 class="template-name">{{name}}</h1>
+    <span class="template-capital">
+      <span class="template-country__info">Capital: </span>
+      <span class="template-country__info_secondary">{{capital}}</span>
+      </span>
+    <span class="template-population">
+      <span class="template-country__info">Population: </span>
+      <span class="template-country__info_secondary">{{population}}</span>
+      </span>
+    <ul class="template-list__lang">
+        {{#each languages}}
+      <li class="template-list__item">
+        <span class="template-country__info">Language: </span>
+        <span class="template-country__info_secondary">{{name}}</span>
+        </li>
+      <li class="template-list__item">
+        <span class="template-country__info">Native Language: </span>
+        <span class="template-country__info_secondary">{{nativeName}}</span>
+        </li>
+        {{/each}}
+    </ul>
+    {{!-- <span class="template-lang">{{languages}}</span> --}}
+  </div>
+    
+    <img src="{{flag}}" alt="flag" class="template-img">
+</div>
+  {{/each}}
