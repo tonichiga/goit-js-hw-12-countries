@@ -14,15 +14,18 @@ defaults.delay = 1500;
 defaultModules.set(PNotifyMobile, {});
 
 const ref = {
-  inputRef: document.querySelector('.input-countries'),
+  inputRef: document.querySelector('.input-form'),
   listCountriesRef: document.querySelector('.list-countries'),
   listElementRef: document.querySelector('.template-list'),
+  btnClear: document.querySelector('.btn-clear'),
+  inputField: document.querySelector('.input-countries'),
 };
-
-ref.inputRef.addEventListener(
+let nameCountry = '';
+ref.inputField.addEventListener(
   'input',
   debounce(e => {
-    const nameCountry = e.target.value;
+    nameCountry = e.target.value;
+
     if (nameCountry.length >= 2) {
       fetch(`https://restcountries.eu/rest/v2/name/${nameCountry}`)
         .then(response => response.json())
@@ -42,6 +45,7 @@ ref.inputRef.addEventListener(
           } else if (data.length >= 2 && data.length <= 30) {
             ref.inputRef.classList.add('move-top');
             ref.listCountriesRef.innerHTML = '';
+            ref.listElementRef.innerHTML = '';
             // ref.listElementRef.innerHTML = '';
 
             const markup = templateList(data);
@@ -57,9 +61,20 @@ ref.inputRef.addEventListener(
             );
           }
         });
+    } else {
+      alert({
+        text: 'Please input minimum two letters!',
+        addClass: 'angeler-extended',
+      });
     }
   }, 1000),
 );
+ref.btnClear.addEventListener('click', e => {
+  ref.listCountriesRef.innerHTML = '';
+  ref.listElementRef.innerHTML = '';
+  ref.inputRef.classList.remove('move-top');
+  ref.inputField.value = '';
+});
 
 // test
 
